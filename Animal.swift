@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum AnimalKind:String {
     case pies = "Pies"
@@ -15,36 +16,31 @@ enum AnimalKind:String {
     case inny = "Inny"
 }
 
-protocol Animal {
-    var imie:String { get  set }
-    var gatunek:AnimalKind { get  set }
-    var zdjecie:Bool? { get  set }
-    var description: String { get }
-    //func description() -> String
-}
 
-class Pies:Animal, CustomStringConvertible {
+class Animal:CustomStringConvertible {
     
     var imie:String
     var gatunek:AnimalKind
-    var zdjecie:Bool?
+    var zdjecie:UIImage?
     
-    init(imie:String, gatunek:AnimalKind, zdjecie:Bool){
+    init(imie:String, gatunek:AnimalKind, zdjecie:UIImage?){
         self.imie = imie
         self.gatunek = gatunek
         self.zdjecie = zdjecie
     }
     
     var description: String {
-        return "By CustomStringConvertible - \(imie) - \(gatunek) - " + (zdjecie! ? "Posiada":"Nie posiada zdjęcia")
+        return "By CustomStringConvertible - \(imie) - \(gatunek) - " + (zdjecie != nil ? "Posiada":"Nie posiada zdjęcia")
     }
     
-    //    func description() -> String
-    //    {
-    //        return "\(imie) - \(gatunek) - " + (zdjecie! ? "Posiada":"Nie posiada zdjęcia")
-    //    }
     
+    public static func main() {
+        print("TEST")
+        let zdjecieAzor2 = UIImage()
+        var piesek:Animal = Animal(imie: "Azor", gatunek: .pies, zdjecie: nil)
+        var piesek2:Animal = Animal(imie: "Azor2", gatunek: .pies, zdjecie: zdjecieAzor2)
+        
+        print(piesek)
+        print(piesek2)
+    }
 }
-
-var piesek:Animal = Pies(imie: "Azor", gatunek: .pies, zdjecie: false)
-piesek.description
