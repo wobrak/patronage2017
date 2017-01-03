@@ -22,7 +22,7 @@ class Animal:CustomStringConvertible {
     var imie:String
     var gatunek:AnimalKind
     var zdjecie:UIImage?
-    var waga:Float = 0.0
+    var waga:Float?
     
     var isPictureAvail:Bool {
         get {
@@ -30,14 +30,15 @@ class Animal:CustomStringConvertible {
         }
     }
     
-    init(imie:String, gatunek:AnimalKind, zdjecie:UIImage?){
+    init(imie:String, gatunek:AnimalKind, zdjecie:UIImage?, waga:Float? = nil){
         self.imie = imie
         self.gatunek = gatunek
         self.zdjecie = zdjecie
+        self.waga = waga
     }
     
     var description: String {
-        return "By CustomStringConvertible - \(imie) - \(gatunek) - " + (zdjecie != nil ? "Posiada":"Nie posiada zdjęcia")
+        return "By CustomStringConvertible - \(imie) - \(gatunek) - " + (zdjecie != nil ? "Posiada zdjęcie":"Nie posiada zdjęcia")
     }
     
     
@@ -46,12 +47,19 @@ class Animal:CustomStringConvertible {
         let zdjecieAzor2 = UIImage()
         let piesek:Animal = Animal(imie: "Azor", gatunek: .pies, zdjecie: nil)
         let piesek2:Animal = Animal(imie: "Azor2", gatunek: .pies, zdjecie: zdjecieAzor2)
+        let kocur:Animal = Animal(imie: "Mruk", gatunek: .kot, zdjecie: nil)
+        let kocur2:Animal = Animal(imie: "Mruk2", gatunek: .kot, zdjecie: nil, waga: 100)
         
         print(piesek)
         print(piesek2)
+        print(kocur)
         
-        let floatTest:Float = 4
-        print(floatTest.convertToKg())
+        print(piesek.isPictureAvail)
+        print(piesek2.isPictureAvail)
+        print(kocur.waga as Any)
+        print(kocur2.waga as Any)
+        print(kocur2.waga?.convertToKg() as Any)
+        
         
     }
 }
@@ -59,7 +67,7 @@ class Animal:CustomStringConvertible {
 extension Float {
     
     func convertToKg() -> Float {
-        return self/2.20462
+        return Float(self/2.20462)
     }
     
 }
