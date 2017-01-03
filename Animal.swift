@@ -22,6 +22,13 @@ class Animal:CustomStringConvertible {
     var imie:String
     var gatunek:AnimalKind
     var zdjecie:UIImage?
+    var waga:Float = 0.0
+    
+    var isPictureAvail:Bool {
+        get {
+            return zdjecie != nil ? true:false
+        }
+    }
     
     init(imie:String, gatunek:AnimalKind, zdjecie:UIImage?){
         self.imie = imie
@@ -37,10 +44,27 @@ class Animal:CustomStringConvertible {
     public static func main() {
         print("TEST")
         let zdjecieAzor2 = UIImage()
-        var piesek:Animal = Animal(imie: "Azor", gatunek: .pies, zdjecie: nil)
-        var piesek2:Animal = Animal(imie: "Azor2", gatunek: .pies, zdjecie: zdjecieAzor2)
+        let piesek:Animal = Animal(imie: "Azor", gatunek: .pies, zdjecie: nil)
+        let piesek2:Animal = Animal(imie: "Azor2", gatunek: .pies, zdjecie: zdjecieAzor2)
         
         print(piesek)
         print(piesek2)
+        
+        let floatTest:Float = 4
+        print(floatTest.convertToKg())
+        
     }
 }
+
+extension Float {
+    
+    func convertToKg() -> Float {
+        return self/2.20462
+    }
+    
+}
+
+//Animal.main()
+
+
+
