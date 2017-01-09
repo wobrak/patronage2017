@@ -24,11 +24,12 @@ class Animal:CustomStringConvertible {
     var zdjecie:UIImage?
     var waga:Float?
     
-    var isPictureAvail:Bool {
-        get {
-            return zdjecie != nil ? true:false
-        }
-    }
+    var isPictureAvail:
+        Bool {
+        
+        return zdjecie
+            !=
+        nil }
     
     init(imie:String, gatunek:AnimalKind, zdjecie:UIImage?, waga:Float? = nil){
         self.imie = imie
