@@ -25,7 +25,6 @@ class CRUDViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func actionButtonSave(_ sender: Any) {
         
-        print("BELE")
         petRecordCrud?.imie = imie.text!
         switch mode {
             case "Add":
